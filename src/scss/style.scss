@@ -1,0 +1,303 @@
+@use 'sass:color';
+@use '_variables' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: $dark-bg;
+  color: white;
+  line-height: 1.6;
+  position: relative;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .rocket {
+    position: absolute;
+    bottom: 10%;
+    width: 100px;
+    transition: transform 0.3s ease; // Для плавності
+  }
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: $primary-color;
+  z-index: 1000;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.destinations {
+  padding: 50px 20px;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .planets {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .planet {
+    width: 150px;
+    height: 150px;
+    background: $light-bg;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+}
+
+.contact {
+  padding: 50px 20px;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
+.about, .pricing, .contact {
+  padding: 50px 20px;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.price-card {
+  display: inline-block;
+  width: 200px;
+  padding: 20px;
+  margin: 10px;
+  background: $light-bg;
+  border-radius: 10px;
+
+  .price-value {
+    color: $primary-color;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 100px; // Щоб уникнути стрибків тексту
+    text-align: right; // Вирівнювання для естетики
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+.form-field {
+  padding: 10px;
+  border: 1px solid $primary-color;
+  border-radius: 5px;
+  background: $dark-bg;
+  color: white;
+}
+
+/* Модальні вікна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: $dark-bg;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+
+  .modal-details {
+    list-style: none;
+    margin: 20px 0;
+    text-align: left;
+
+    li {
+      margin: 10px 0;
+      strong { color: $primary-color; }
+    }
+  }
+
+  .modal-button {
+    padding: 10px 20px;
+    background: $primary-color;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: color.adjust($primary-color, $lightness: 10%);
+    }
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.contact-form .cta-button {
+  width: 150px;
+  margin: auto;
+}
+
+.timeline-line {
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 20px auto;
+  height: 4px;
+  background: $light-bg;
+  position: relative;
+}
+.timeline h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.timeline-point {
+  width: 20px;
+  height: 20px;
+  background: $primary-color;
+  border-radius: 50%;
+  position: relative;
+  top: -8px;
+  &::after {
+    content: attr(data-step);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+  }
+}
+
+.cta-button {
+  padding: 12px 25px;
+  background: linear-gradient(45deg, $primary-color, color.adjust($primary-color, $lightness: 20%));
+  border: none;
+  border-radius: 25px; // Закруглені краї
+  color: white;
+  font-size: 1.1rem;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba($primary-color, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba($primary-color, 0.7);
+
+    &:before {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.cta-button {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.countdown {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
