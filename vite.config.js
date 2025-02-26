@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/<space-landing>/',
   root: 'src',
   build: {
-    outDir: '../dist',
+    outDir: '../docs',
     emptyOutDir: true,
     minify: 'esbuild',
     rollupOptions: {
