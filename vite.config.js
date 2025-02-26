@@ -3,7 +3,7 @@ import viteImagemin from 'vite-plugin-imagemin';
 import { createHtmlPlugin } from 'vite-plugin-html'; // Правильний імпорт
 
 export default defineConfig({
-  base: '/<space-landing>/',
+  base: '/space-landing/',
   root: 'src',
   build: {
     outDir: '../docs',
